@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; Point Estimation – CM_4450_B21__Quarto_Book</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./2_Interval_Estimation.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1_Point_Estimation.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Point Estimation</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">CM_4450_B21__Quarto_Book</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_Point_Estimation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Point Estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_Interval_Estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Interval Estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_Hypothesis_Testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Hypothesis Testing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_ Analysis_of_Variance_and_Regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Analysis of Variance and Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#statistical-inference" id="toc-statistical-inference" class="nav-link active" data-scroll-target="#statistical-inference"><span class="header-section-number">1.1</span> Statistical Inference</a></li>
+  <li><a href="#point-estimation" id="toc-point-estimation" class="nav-link" data-scroll-target="#point-estimation"><span class="header-section-number">1.2</span> Point Estimation</a>
+  <ul class="collapse">
+  <li><a href="#methods-of-finding-point-estimators" id="toc-methods-of-finding-point-estimators" class="nav-link" data-scroll-target="#methods-of-finding-point-estimators"><span class="header-section-number">1.2.1</span> Methods of finding point estimators</a></li>
+  <li><a href="#methods-of-evaluating-estimators" id="toc-methods-of-evaluating-estimators" class="nav-link" data-scroll-target="#methods-of-evaluating-estimators"><span class="header-section-number">1.2.2</span> Methods of evaluating estimators</a></li>
+  </ul></li>
+  <li><a href="#chapter-1-tutorial" id="toc-chapter-1-tutorial" class="nav-link" data-scroll-target="#chapter-1-tutorial">Chapter 1: Tutorial</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Point Estimation</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="statistical-inference" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="statistical-inference"><span class="header-section-number">1.1</span> Statistical Inference</h2>
+<ul>
+<li>The process of making educated guess and conclusions regarding a population, using a sample of that population is called <strong>Statistical Inference</strong>.</li>
+<li>Two important problems in statistical inference are <strong>estimation of parameters</strong> and <strong>tests of hypothesis</strong></li>
+<li>Estimation can be of the form of <strong>point estimation</strong> and <strong>interval estimation</strong>.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="1_Point_Estimation_files/figure-html/Ch2box1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="h"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="point-estimation" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="point-estimation"><span class="header-section-number">1.2</span> Point Estimation</h2>
+<p><strong>Main Task</strong></p>
+<ul>
+<li>Assume that some characteristic of the elements in a population can be represented by a random variable <span class="math inline">\(X\)</span>.</li>
+<li>Assume that <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> is a random sample from a density <span class="math inline">\(f(x, \theta)\)</span>, where the form of the density is known but the parameter <span class="math inline">\(\theta\)</span> is unknown.</li>
+<li>The objective is to construct good estimators for <span class="math inline">\(\theta\)</span> or its function <span class="math inline">\(\tau (\theta)\)</span> on the basis of the observed sample values <span class="math inline">\(x_1, x_2, \dots, x_n\)</span> of a random sample <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> from <span class="math inline">\(f(x, \theta)\)</span>.</li>
+</ul>
+<p><strong>Definition: Statistic</strong></p>
+<p>Suppose <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> be <span class="math inline">\(n\)</span> observable random variables. Then, a known function <span class="math inline">\(T=g(X_1, X_2, \dots, X_n)\)</span> of observable random variables <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> is called a <strong>statistic</strong>. A statistic is always a random variable.</p>
+<p><strong>Definition: Estimator</strong></p>
+<p>Suppose <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> is a random sample from a density <span class="math inline">\(f(x, \theta)\)</span> and it is desired to estimate <span class="math inline">\(\theta\)</span>. Suppose <span class="math inline">\(T=g(X_1, X_2, \dots, X_n)\)</span> is a <em>statistic</em> that can be used to determine and approximate value for <span class="math inline">\(\theta\)</span>. Then <span class="math inline">\(T\)</span> is called an <strong>estimator</strong> for <span class="math inline">\(\theta\)</span>. An estimator is always a random variable.</p>
+<p><strong>Definition: Estimate</strong></p>
+<p>Suppose <span class="math inline">\(T=g(X_1, X_2, \dots, X_n)\)</span> be an estimator for <span class="math inline">\(\theta\)</span>. Suppose that <span class="math inline">\(x_1, x_2, \dots, x_n\)</span> is a set of observed values of the random variable <span class="math inline">\(X_1, X_2, \dots, X_n.\)</span> Then <em>the value</em> <span class="math inline">\(t=g(x_1, x_2, \dots, x_n)\)</span> obtained by substituting the observed values in the estimator is called an <strong>estimate</strong> for <span class="math inline">\(\theta\)</span>.</p>
+<ul>
+<li><p>Therefore the <strong>estimator</strong> stands for the function of the sample, and the word <strong>estimate</strong> stands for the realized value of that function.</p></li>
+<li><p><em>Notation:</em> An estimator of <span class="math inline">\(\theta\)</span> is denoted by <span class="math inline">\(\hat{\theta}\)</span>. An estimate of <span class="math inline">\(\theta\)</span> is also denoted by <span class="math inline">\(\hat{\theta}\)</span>. The difference between the two should be understood based on the context.</p></li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Estimator: Using random sample (<span class="math inline">\(X_1, X_2, \dots, X_n\)</span>)</th>
+<th>Estimate 1: Using observed sample (<span class="math inline">\(1,4,2,3,4\)</span>)</th>
+<th>Estimate 2: Using observed sample (<span class="math inline">\(4,2,2,6,3\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mu\)</span></td>
+<td><span class="math inline">\(\hat{\mu}=\bar{X}\)</span></td>
+<td><span class="math inline">\(\hat{\mu}=\)</span></td>
+<td><span class="math inline">\(\hat{\mu}=\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\sigma^2\)</span></td>
+<td><span class="math inline">\(\hat{\sigma^2}=S^2\)</span></td>
+<td><span class="math inline">\(\hat{\sigma^2}=\)</span></td>
+<td><span class="math inline">\(\hat{\sigma^2}=\)</span></td>
+</tr>
+</tbody>
+</table>
+<section id="methods-of-finding-point-estimators" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="methods-of-finding-point-estimators"><span class="header-section-number">1.2.1</span> Methods of finding point estimators</h3>
+<ul>
+<li>In some cases there will be an obvious or natural candidate for a point estimator of a particular parameter.</li>
+<li>For example, the sample mean is a good point estimator of the population mean</li>
+<li>However, in more complicated models we need a methodical way of estimating parameters.</li>
+<li>There are different methods of finding point estimators
+<ul>
+<li>Method of Moments</li>
+<li>Maximum Likelihood Estimators (MLE)</li>
+<li>Method of Least Squares <!--
+                                              (Mood page 273) --></li>
+<li>Bayes Estimators</li>
+<li>The EM Algorithm</li>
+</ul></li>
+<li>However, these techniques do not carry any guarantees with them.</li>
+<li>The point estimators that they yeild still must be evaluated before their worth is established</li>
+</ul>
+<section id="method-of-moments" class="level4" data-number="1.2.1.1">
+<h4 data-number="1.2.1.1" class="anchored" data-anchor-id="method-of-moments"><span class="header-section-number">1.2.1.1</span> Method of Moments</h4>
+<ul>
+<li>Let <span class="math inline">\(X_1, X_2, \dots X_n\)</span> be a random sample from a population with pdf or pmf <span class="math inline">\(f(x; \theta),\)</span> where <span class="math inline">\(\theta = (\theta_1, \theta_2, \dots, \theta_k)\)</span> and <span class="math inline">\(k\geq 1\)</span>.</li>
+<li>Sample moments <span class="math inline">\(m^\prime\)</span> (Sample moments <span class="math inline">\(m\)</span> about <span class="math inline">\(0\)</span>) and population moments <span class="math inline">\(\mu^\prime\)</span> are defined as follows</li>
+</ul>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Sample moment</th>
+<th>Population moment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(m_1= \frac{1}{n}\sum_{i=1}^nX_i\)</span></td>
+<td><span class="math inline">\(\mu_1^\prime=E(X)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(m_2= \frac{1}{n}\sum_{i=1}^nX_i^2\)</span></td>
+<td><span class="math inline">\(\mu_2^\prime=E(X^2)\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\dots\)</span></td>
+<td><span class="math inline">\(\dots\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(m_k^= \frac{1}{n}\sum_{i=1}^nX_i^k\)</span></td>
+<td><span class="math inline">\(\mu_k^\prime=E(X^k)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Each <span class="math inline">\(\mu_j^\prime\)</span> is a function <span class="math inline">\(\theta,\)</span> i.e.&nbsp;<span class="math inline">\(\mu_j^\prime= \mu_j^\prime(\theta_1, \theta_2, \dots, \theta_k)\)</span> for <span class="math inline">\(j=1,2,\dots, k.\)</span></p>
+<p><strong>Method of Moments Estimators (MME)</strong></p>
+<p>We first equate the first <span class="math inline">\(k\)</span> sample moments to the corresponding <span class="math inline">\(k\)</span> population moments,</p>
+<p><span class="math display">\[m_1 \approx \mu_1^\prime,\]</span> <span class="math display">\[m_2 \approx \mu_2^\prime,\]</span> <span class="math display">\[\dots\]</span> <span class="math display">\[m_k\approx \mu_k^\prime,\]</span></p>
+<p>Then we solve the resulting systems of simultaneous equations for <span class="math inline">\(\hat{\theta_1}, \hat{\theta_2}, \dots, \hat{\theta_k}\)</span></p>
+<p><strong>Remarks on Method of Moments Estimators</strong></p>
+<ul>
+<li>Very easy to compute</li>
+<li>Always give an estimator to start with</li>
+<li>Generally consistent (Since sample moments are consistent for population moments)</li>
+<li>Not necessarily the best or most efficient estimators</li>
+</ul>
+</section>
+<section id="maximum-likelihood-estimators-mle" class="level4" data-number="1.2.1.2">
+<h4 data-number="1.2.1.2" class="anchored" data-anchor-id="maximum-likelihood-estimators-mle"><span class="header-section-number">1.2.1.2</span> Maximum Likelihood Estimators (MLE)</h4>
+<p><em>Example</em></p>
+<p>A company receives a certain number of orders per day, and this count appears to follow a Poisson distribution with a parameter <span class="math inline">\(\lambda\)</span>.</p>
+<p>The recorded number of orders over 10 randomly chosen days are: <span class="math inline">\(12,14,15,12,13,10,11,15,10,6\)</span></p>
+<p><em>Deriving the Joint Probability Expression</em></p>
+<p>We can express the probability of observing this particular set of order counts, i.e.,<span class="math inline">\(P(X_1=12, \; X_2 = 14, \dots, X_{10} = 6)\)</span> as a function of <span class="math inline">\(\lambda\)</span>.</p>
+<p><span class="math display">\[\text{Joint probability of the data} = P(X_1=12, \; X_2 = 14, \dots, X_{10} = 6)\]</span> <span class="math display">\[=\frac{e^{-\lambda}\lambda^{12}}{12!}\frac{e^{-\lambda}\lambda^{14}}{14!}\dots\frac{e^{-\lambda}\lambda^{6}}{6!}\]</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="1_Point_Estimation_files/figure-html/joint-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Probability of the sample is maximum when <span class="math inline">\(\lambda = 11.8\)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><p>By treating this probability of obtaining the sample as a function of <span class="math inline">\(\lambda\)</span>, we obtain the <strong>likelihood function</strong>, which represents how likely different values of <span class="math inline">\(\lambda\)</span> are given the observed data.</p></li>
+<li><p>The graphical representation indicates that the likelihood function reaches its maximum when <span class="math inline">\(\lambda = 11.8\)</span>.</p></li>
+<li><p>Since these data have already occurred, it is very likely that the data have arisen from a Poisson distribution with <span class="math inline">\(\lambda =11.8\)</span>.</p></li>
+<li><p>This value is referred to as the <strong>maximum likelihood estimate (MLE)</strong> of <span class="math inline">\(\lambda\)</span>.</p></li>
+</ul>
+<p><strong>Theory</strong></p>
+<ul>
+<li>In order to define maximum-likelihood estimators, we shall first define the likelihood function.</li>
+</ul>
+<p><strong>Definition: Likelihood function</strong></p>
+<p>Let <span class="math inline">\(x_1,x_2, \dots, x_n\)</span> be a set of observations of random variables <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> with the joint density of <span class="math inline">\(n\)</span> random variables, say <span class="math inline">\(f_{X_1, X_2, \dots, X_n}(x_1,x_2, \dots, x_n;\; \theta)\)</span>. This joint density function, which is considered to be a function of <span class="math inline">\(\theta\)</span> is called the <strong>likelihood function of</strong> <span class="math inline">\(\theta\)</span> for the set of observations (sample) <span class="math inline">\(x_1,x_2, \dots, x_n.\)</span></p>
+<p>In particular, if <span class="math inline">\(x_1,x_2, \dots, x_n\)</span> is a random sample from the density <span class="math inline">\(f(x; \theta)\)</span>, then the likelihood function is <span class="math inline">\(f(x_1; \theta)f(x_2; \theta) \dots f(x_n; \theta).\)</span></p>
+<p><em>Notation</em></p>
+<p>We use the notation <span class="math inline">\(L(\theta;\;x_1,x_2, \dots, x_n)\)</span> for the likelihood function, in order to remind ourselves to think of the likelihood function as a function of <span class="math inline">\(\theta.\)</span></p>
+<ul>
+<li>Likelihood function is seen as a function of <span class="math inline">\(\theta\)</span> rather than <span class="math inline">\(x\)</span></li>
+<li>Likelihood can be viewed as the degree of plausibility.</li>
+<li>An estimate of <span class="math inline">\(\theta\)</span> may be obtained by choosing the most plausible value, i.e., where the likelihood function is maximized.</li>
+</ul>
+<p><strong>Definition: Maximum Likelihood Estimator</strong></p>
+<p>Let <span class="math inline">\(L(\theta)=L(\theta;\;x_1,x_2, \dots, x_n)\)</span> be the likelihood function of <span class="math inline">\(\theta\)</span> for the sample <span class="math inline">\(x_1,x_2, \dots, x_n.\)</span> Suppose <span class="math inline">\(L(\theta)\)</span> has its maximum when <span class="math inline">\(\theta = \hat{\theta}.\)</span></p>
+<p>Then <span class="math inline">\(\hat{\theta}\)</span> is called the <strong>Maximum likelihood estimate of</strong> <span class="math inline">\(\theta\)</span>.</p>
+<p>The corresponding estimator is called the <strong>Maximum likelihood estimator of</strong> <span class="math inline">\(\theta\)</span>.</p>
+<ul>
+<li>Many likelihood functions satisfy regularity conditions; so the maximum likelihood estimator is the solution of the equation <span class="math display">\[\frac{dL(\theta)}{d\theta} = 0\]</span></li>
+</ul>
+<p><strong>Log-likelihood function</strong></p>
+<p>Let <span class="math display">\[l(\theta) = ln[L(\theta)].\]</span></p>
+<p>Then, <span class="math inline">\(l(\theta)\)</span> is called the <strong>log-likelihood function</strong>.</p>
+<ul>
+<li>Both <span class="math inline">\(L(\theta)\)</span> and <span class="math inline">\(l(\theta)\)</span> have their maxima at the same value of <span class="math inline">\(\theta\)</span>.</li>
+<li>It is sometimes easier to find the maximum of the logarithm of the likelihood and thereby simplify the calculations in finding the maximum likelihood estimate.</li>
+</ul>
+<p><strong>Invariance Property of MLE’s</strong></p>
+<p>If <span class="math inline">\(\hat{\theta}\)</span> is the MLE of <span class="math inline">\(\theta\)</span>, then for any function <span class="math inline">\(\tau(\theta),\)</span> the MLE of <span class="math inline">\(\tau(\theta)\)</span> is <span class="math inline">\(\tau(\hat{\theta}).\)</span></p>
+<div style="page-break-after: always;"></div>
+</section>
+</section>
+<section id="methods-of-evaluating-estimators" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="methods-of-evaluating-estimators"><span class="header-section-number">1.2.2</span> Methods of evaluating estimators</h3>
+<ul>
+<li><p>We discussed several methods of obtaining point estimators.</p></li>
+<li><p>It is possible that different methods of finding estimators will lead to same estimator or different estimators.</p></li>
+<li><p>In this section we discuss certain properties, which an estimator may or may not posses, that will guide us in deciding whether one estimator is better than another.</p></li>
+</ul>
+<section id="unbiasedness" class="level4" data-number="1.2.2.1">
+<h4 data-number="1.2.2.1" class="anchored" data-anchor-id="unbiasedness"><span class="header-section-number">1.2.2.1</span> Unbiasedness</h4>
+<p><strong>Definition: Unbiased estimator</strong></p>
+<p>An estimator <span class="math inline">\(\hat{\theta}\)</span> <span class="math inline">\((=t(X_1, X_2, \dots, X_n))\)</span> is defined to be an <strong>unbiased estimator</strong> of <span class="math inline">\(\theta\)</span> if and only if <span class="math inline">\(E(\hat{\theta}) = \theta\)</span></p>
+<ul>
+<li><p>The difference <span class="math inline">\(E(\hat{\theta}) -\theta\)</span> is called as the bias of <span class="math inline">\(\hat{\theta}\)</span> and denoted by <span class="math inline">\(Bias(\hat{\theta}) = E(\hat{\theta}) - \theta\)</span></p></li>
+<li><p>An estimator whose bias is equal to 0 is called <strong>unbiased</strong>.</p></li>
+<li><p>This means that, on average, the estimator correctly estimates <span class="math inline">\(\theta\)</span>, though it may fluctuate from sample to sample.</p></li>
+</ul>
+<p><strong>Asymptotic unbiasedness</strong></p>
+<p>An estimator <span class="math inline">\(\hat{\theta}\)</span> of a parameter <span class="math inline">\(\theta\)</span> is said to be <em>asymptotically unbiased</em> if its bias</p>
+<p><span class="math display">\[Bias(\hat{\theta}) = E(\hat{\theta}) - \theta\]</span></p>
+<p>satisfies</p>
+<p><span class="math display">\[\lim_{n \to \infty}Bias(\hat{\theta}) = 0.\]</span></p>
+<p>This means that as the sample size <span class="math inline">\(n\)</span> increases, the bias of the estimator vanishes, making it approximately unbiased for large samples.</p>
+</section>
+<section id="consistency" class="level4" data-number="1.2.2.2">
+<h4 data-number="1.2.2.2" class="anchored" data-anchor-id="consistency"><span class="header-section-number">1.2.2.2</span> Consistency</h4>
+<p><strong>Mean-Squared Error</strong></p>
+<ul>
+<li>The <em>mean-squared error</em> is a measure of goodness or closeness of an estimator to the target.</li>
+</ul>
+<p><strong>Definition: Mean-squared Error (MSE)</strong></p>
+<p>The <strong>mean-squared error</strong> of an estimator <span class="math inline">\(\hat{\theta}\)</span> of <span class="math inline">\(\theta\)</span> is defined as <span class="math inline">\(MSE(\hat{\theta})= E\left[(\hat{\theta} - \theta)^2 \right]\)</span></p>
+<ul>
+<li><p>The MSE measures the average squared difference between <span class="math inline">\(\hat{\theta}\)</span> and <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>The MSE is a function of <span class="math inline">\(\theta\)</span> and has the interpretation</p></li>
+</ul>
+<p><span class="math display">\[MSE(\hat{\theta})= Var(\hat{\theta})+ \left[Bias(\hat{\theta}) \right]^2\]</span></p>
+<ul>
+<li><p>Therefore the MSE incorporates two components, one measuring the variability of the estimator (<em>precision</em>) and the other measuring its bias (<em>accuracy</em>).</p></li>
+<li><p>Small value of MSE implies small combined variance and bias.</p></li>
+<li><p>If <span class="math inline">\(\hat{\theta}\)</span> is unbiased, then <span class="math inline">\(MSE(\hat{\theta})= Var(\hat{\theta})\)</span></p></li>
+<li><p>The positive square root of MSE is known as the <em>root mean squared error</em> <span class="math inline">\(RMSE(\hat{\theta})= \sqrt{MSE(\hat{\theta})}\)</span></p></li>
+</ul>
+<p><strong>Consistency</strong></p>
+<ul>
+<li>Estimator <span class="math inline">\(\hat{\theta}\)</span> is said to be consistent for <span class="math inline">\(\theta\)</span> if <span class="math inline">\(MSE(\hat{\theta})\)</span> approaches zero as the sample size <span class="math inline">\(n\)</span> approaches <span class="math inline">\(\infty\)</span>.</li>
+</ul>
+<p><span class="math display">\[lim_{n\rightarrow \infty}E\left[(\hat{\theta} - \theta)^2 \right]=0\]</span></p>
+<ul>
+<li>Mean-squared error consistency implies that the bias and the variance both approach to zero as <span class="math inline">\(n\)</span> approaches <span class="math inline">\(\infty.\)</span></li>
+</ul>
+</section>
+<section id="best-unbiased-estimator" class="level4" data-number="1.2.2.3">
+<h4 data-number="1.2.2.3" class="anchored" data-anchor-id="best-unbiased-estimator"><span class="header-section-number">1.2.2.3</span> Best Unbiased Estimator</h4>
+<p><strong>Why Finding the “Best” Estimator Is Difficult</strong></p>
+<p>When estimating an unknown parameter <span class="math inline">\(\theta\)</span>, different estimators can be used. The Mean Squared Error (MSE) is a common criterion for comparing estimators because it considers both bias and variance:</p>
+<p><span class="math display">\[MSE(\hat{\theta})= Var(\hat{\theta})+ \left[Bias(\hat{\theta}) \right]^2\]</span></p>
+<p>However, a comparison based solely on MSE does not always yield a clear winner. The reason is that:</p>
+<ul>
+<li><p>There is no single “best” MSE estimator – Some estimators may have lower variance but higher bias, while others have low bias but high variance.</p></li>
+<li><p>The class of all possible estimators is too large – Without restrictions, choosing the best estimator is too complex.</p></li>
+</ul>
+<p><strong>Restricting the Class of Estimators</strong></p>
+<p>To make this problem tractable, we restrict our focus to only unbiased estimators, which satisfy:</p>
+<p><span class="math display">\[E[\hat{\theta}] = \theta\]</span> By focusing on unbiased estimators, we can now ask: Among all unbiased estimators, which one has the smallest variance? This leads us to the <strong>Uniform Minimum Variance Unbiased Estimator (UMVUE)</strong>.</p>
+<p><strong>Uniform Minimum Variance Unbiased Estimator (UMVUE)</strong></p>
+<p><strong>Definition</strong></p>
+<p>An estimator <span class="math inline">\(W^*\)</span> is a <em>best unbiased estimator</em> of <span class="math inline">\(\tau(\theta)\)</span> if it satisfied <span class="math inline">\(E(W^*) = \tau(\theta)\)</span> for all <span class="math inline">\(\theta\)</span> and, for any other <em>estimator</em> <span class="math inline">\(W\)</span> with <span class="math inline">\(E(W) = \tau(\theta)\)</span>, we have <span class="math inline">\(Var(W^*) \leq Var(W)\)</span> for all <span class="math inline">\(\theta\)</span>. <span class="math inline">\(W^*\)</span> is also called a <em>uniform minimum variance unbiased estimator</em> (UMVUE) of <span class="math inline">\(\tau(\theta)\)</span></p>
+<p>In other words, an estimator <span class="math inline">\(\theta\)</span> is a <em>uniform minimum variance unbiased estimator</em> if</p>
+<ol type="1">
+<li><p>It is <strong>unbiased</strong>: <span class="math inline">\(E(\hat{\theta}) = \theta\)</span>.</p></li>
+<li><p>It has the <strong>smallest variance</strong> among all unbiased estimators.</p></li>
+</ol>
+<p><em>Why Do We Care About UMVUE?</em></p>
+<p>Since unbiased estimators fluctuate around the true value, we prefer the one that varies the least. This ensures better precision.</p>
+<p><em>Example</em></p>
+<p>Suppose we want to estimate the mean <span class="math inline">\(\mu\)</span> of a population using a sample of size <span class="math inline">\(n\)</span>. Two possible estimators are:</p>
+<ol type="1">
+<li><strong>Sample mean:</strong></li>
+</ol>
+<p><span class="math display">\[\hat{\mu}_1 = \frac{1}{n}\sum_{i=1}^nX_i\]</span></p>
+<p>which is unbiased because <span class="math inline">\(E(\hat{\mu}_1) = \mu\)</span></p>
+<ol start="2" type="1">
+<li><strong>Only using the first sample:</strong></li>
+</ol>
+<p><span class="math display">\[\hat{\mu}_2 = X_1\]</span> which is also unbiased but has <strong>higher variance</strong>.</p>
+<p>Although both estimators are unbiased, <span class="math inline">\(\hat{\mu}_1\)</span> is better because it has lower variance.</p>
+<p>For a normal distribution <span class="math inline">\(X_1, X_2, \dots, X_n \sim N(\mu, \sigma^2)\)</span>, the sample mean:</p>
+<p><span class="math display">\[\hat{\mu}_1 = \frac{1}{n}\sum_{i=1}^nX_i\]</span></p>
+<p>is the UMVUE for <span class="math inline">\(\mu\)</span>, meaning it has the lowest variance among all unbiased estimators.</p>
+<p>However, finding the best unbiased estimator (if it exists) is not easy. In some cases, no such estimator exists at all. Even when an unbiased estimator is available, identifying the one with the lowest variance—the best unbiased estimator—requires solving a complex mathematical optimization problem.</p>
+<section id="cramér-rao-inequality" class="level5" data-number="1.2.2.3.1">
+<h5 data-number="1.2.2.3.1" class="anchored" data-anchor-id="cramér-rao-inequality"><span class="header-section-number">1.2.2.3.1</span> Cramér-Rao Inequality</h5>
+<p><strong>Why Is This Useful?</strong></p>
+<p>Even the best estimator cannot be perfect. The Cramér-Rao bound (CRB) tells us the smallest possible variance for any unbiased estimator. However, an estimator achieving this bound might not exist in certain cases.</p>
+<p><strong>Theorem: Cramér-Rao Inequality</strong></p>
+<p>Let <span class="math inline">\(X_1, \dots, X_n\)</span> be a sample with pdf <span class="math inline">\(f(x|\theta)\)</span>, and let <span class="math inline">\(W(X) = W(X_1,\dots, X_n)\)</span> be any estimator satisfying</p>
+<p><span class="math display">\[\frac{d}{d\theta} E[W(X)] = \int_x \frac{\partial }{\partial \theta}[W(x)f(x|\theta)] dx\]</span> and</p>
+<p><span class="math display">\[Var(W(X)) &lt; \infty.\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[Var(W(X)) \geq \frac{( \frac{d}{d\theta} E[W(X)])^2}{E\left[\left(\frac{\partial }{\partial \theta} lnf(X|\theta)\right)^2\right]}.\]</span></p>
+<p>In other words, For an unbiased estimator <span class="math inline">\(\hat{\theta}:\)</span></p>
+<p><span class="math display">\[Var(\hat{\theta}) \geq \frac{1}{I(\theta)}\]</span> where <span class="math inline">\(I(\theta)\)</span> is the Fisher Information:</p>
+<p><span class="math display">\[I(\theta) = E\left[\left(\frac{\partial }{\partial \theta} lnf(X|\theta)\right)^2\right]\]</span></p>
+<p>The quantity, <span class="math display">\[I(\theta) = E\left[\left(\frac{\partial }{\partial \theta} lnf(X|\theta)\right)^2\right]\]</span> is called the <em>information number</em> or <em>Fisher information</em> of the sample as it quantifies the amount of information that the observed data carries about the unknown parameter <span class="math inline">\(\theta\)</span>. It gives a bound on the variance of the best unbiased estimator of <span class="math inline">\(\theta\)</span>. As the <em>information number</em> gets bigger and we have more information about <span class="math inline">\(\theta\)</span>, we have a smaller bound on the variance of the best unbiased estimator.</p>
+<p><em>Example</em></p>
+<p>For a normal distribution <span class="math inline">\(X_1, X_2\dots,X_n\sim N(\mu, \sigma^2):\)</span>, the Fisher Information is: <span class="math display">\[I(\mu) = \frac{n}{\sigma^2}\]</span></p>
+<p>Thus the <strong>Cramér-Rao lower bound</strong> is</p>
+<p><span class="math display">\[Var(\hat{\mu}) \geq \frac{\sigma^2}{n}.\]</span> Since <span class="math inline">\(Var(\hat{\mu}) = \frac{\sigma^2}{n},\)</span> the sample mean <span class="math inline">\(\hat{\mu}\)</span> achieves this bound, making it <strong>the most efficient unbiased estimator.</strong></p>
+</section>
+</section>
+<section id="sufficiency-using-all-available-information-efficiently" class="level4" data-number="1.2.2.4">
+<h4 data-number="1.2.2.4" class="anchored" data-anchor-id="sufficiency-using-all-available-information-efficiently"><span class="header-section-number">1.2.2.4</span> Sufficiency – Using all available information efficiently</h4>
+<p><em>Why do we need sufficiency?</em></p>
+<p>An estimator should make full use of the <strong>available data</strong>. If we can summarize all relevant information into a single function of the data, we can reduce the problem to estimating from that summary.</p>
+<p><strong>Definition: Sufficient Statistic</strong></p>
+<p>A statistic <span class="math inline">\(T(X)\)</span> is a <em>sufficient Statistic for a parameter</em> <span class="math inline">\(\theta\)</span> if the conditional distribution of the sample <span class="math inline">\(X\)</span> given the value of <span class="math inline">\(T(X)\)</span> does not depend on <span class="math inline">\(\theta\)</span>.</p>
+<p>In other words, once you know <span class="math inline">\(T(X)\)</span>, <strong>the sample data doesn’t give any extra information about</strong> <span class="math inline">\(\theta\)</span>.</p>
+<p><strong>Factorization Theorem (Easy way to check Sufficiency)</strong></p>
+<p>A statistic <span class="math inline">\(T(X)\)</span> is <strong>sufficient</strong> for <span class="math inline">\(\theta\)</span> if the likelihood function can be factored as:</p>
+<p><span class="math display">\[L(\theta|X) = g(T(X), \theta) h(X)\]</span></p>
+<p>where <span class="math inline">\(g(T(X), \theta)\)</span> depends on <span class="math inline">\(\theta\)</span> <strong>only through</strong> <span class="math inline">\(T(X)\)</span></p>
+<p><em>Example</em></p>
+<p>For a normal distribution <span class="math inline">\(X_1,\dots,X_n \sim N(\mu, \sigma^2):\)</span>, the statistic:</p>
+<p><span class="math display">\[T= \frac{1}{n}\sum X_i\]</span></p>
+<p>is sufficient for <span class="math inline">\(\mu\)</span>.</p>
+<p>This means that all the useful information about <span class="math inline">\(\mu\)</span> is contained in the sample mean <span class="math inline">\(T\)</span>.</p>
+</section>
+<section id="rao-blackwell-theorem-improving-an-estimator" class="level4" data-number="1.2.2.5">
+<h4 data-number="1.2.2.5" class="anchored" data-anchor-id="rao-blackwell-theorem-improving-an-estimator"><span class="header-section-number">1.2.2.5</span> Rao-Blackwell Theorem – Improving an estimator</h4>
+<p><em>Why Is This Important?</em></p>
+<p>The Rao-Blackwell theorem provides a way to improve an estimator by using a sufficient statistic. This often leads to the UMVUE.</p>
+<p><strong>Theorem : Rao-Blackwell Theorem</strong></p>
+<p>Let <span class="math inline">\(W\)</span> be any unbiased estimator of <span class="math inline">\(\tau(\theta),\)</span> and let <span class="math inline">\(T\)</span> be a sufficient statistic for <span class="math inline">\(\theta\)</span>. Define <span class="math inline">\(\phi(T) = E(W|T).\)</span> then <span class="math inline">\(E(\phi(T)) = \tau(\theta)\)</span> and <span class="math inline">\(Var(\phi(T)) \leq Var(W)\)</span> for all <span class="math inline">\(\theta\)</span>; that is , <span class="math inline">\(\phi(T)\)</span> is a uniformly better unbiased estimator of <span class="math inline">\(\tau(\theta).\)</span></p>
+<p>In other words,</p>
+<p>Let <span class="math inline">\(\hat{\theta}\)</span> be an unbiased estimator of <span class="math inline">\(\theta\)</span>, and let <span class="math inline">\(T(X)\)</span> be a <strong>sufficient statistic</strong>. then the improved estimator:</p>
+<p><span class="math display">\[\hat{\theta^*} = E[\hat{\theta}|T(X)]\]</span> is unbiased and has variance less than or equal to <span class="math inline">\(\hat{\theta}.\)</span></p>
+<p><strong>Motivation</strong></p>
+<p>If an estimator does not fully use all available information (i.e., it is not based on a sufficient statistic), then it can be improved by conditioning on that statistic.</p>
+<p><em>Example</em></p>
+<p>Suppose we have a normal distribution <span class="math inline">\(X_1,X_2,\dots,X_n \sim N(\mu, \sigma^2).\)</span></p>
+<ol type="1">
+<li><p>The estimator <span class="math inline">\(X_1\)</span> <strong>alone</strong> is unbiased for <span class="math inline">\(\mu\)</span>, but it <strong>ignores most of the data</strong>.</p></li>
+<li><p>The sample mean <span class="math inline">\(\hat{\mu} = \frac{1}{n}\sum(X_i)\)</span> is sufficient for <span class="math inline">\(\mu\)</span>.</p></li>
+</ol>
+<p>By the Rao-Blackwell theorem, the improved estimator:</p>
+<p><span class="math display">\[E[X_1|\hat{\mu}] = \hat{\mu}\]</span></p>
+<p>has <strong>lower variance</strong> than <span class="math inline">\(X_1\)</span>.</p>
+<p>Thus, <span class="math inline">\(\hat{\mu}\)</span> is the UMVUE for <span class="math inline">\(\mu.\)</span></p>
+<p><strong>Summary</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Key Idea</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Unbiased Estimator</td>
+<td>Expected value equals the true parameter.</td>
+<td>Sample mean <span class="math inline">\(\hat{\mu}\)</span> is unbiased for <span class="math inline">\(\mu\)</span></td>
+</tr>
+<tr class="even">
+<td>UMVUE</td>
+<td>Best unbiased estimator with lowest variance.</td>
+<td>Sample mean is UMVUE for <span class="math inline">\(\mu\)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Sufficiency</td>
+<td>A statistic that contains all information about <span class="math inline">\(\theta\)</span>.</td>
+<td>Sample mean is sufficient for <span class="math inline">\(\mu\)</span></td>
+</tr>
+<tr class="even">
+<td>Rao-Blackwell Theorem</td>
+<td>Improves an estimator using sufficiency.</td>
+<td><span class="math inline">\(\hat{\mu}\)</span> is better than <span class="math inline">\(X_1\)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Cramér-Rao Inequality</td>
+<td>Sets the lower bound for variance.</td>
+<td><span class="math inline">\(Var(\hat{\mu}) \geq\frac{\sigma^2}{n}\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p>These ideas are fundamental in statistics and machine learning for choosing the best estimator.</p>
+</section>
+</section>
+</section>
+<section id="chapter-1-tutorial" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="chapter-1-tutorial">Chapter 1: Tutorial</h2>
+<ol type="1">
+<li><p>Let <span class="math inline">\(X_1, X_2, \dots, X_n \sim Poisson(\lambda).\)</span> Derive a method of moment estimators for <span class="math inline">\(\lambda\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(X_1, X_2, \dots, X_n \sim iid\;\; N(\mu, \sigma^2),\)</span> both <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> unknown. Derive a method of moment estimators for <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(X_1, X_2, \dots, X_m \sim iid\;\; Bin(n,\theta),\)</span> both <span class="math inline">\(n\)</span> and <span class="math inline">\(\theta\)</span> unknown. Derive a method of moment estimators for <span class="math inline">\(n\)</span> and <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(X_1, X_2, \dots, X_n \sim iid\;\; Unif(\theta_1,\theta_2),\)</span> where <span class="math inline">\(\theta_1&lt;\theta_2\)</span>, both unknown. Derive a method of moment estimators for <span class="math inline">\(\theta_1\)</span> and <span class="math inline">\(\theta_2\)</span>.</p></li>
+</ol>
+<!-- Sir, Lecture note example 2.6-->
+<ol start="5" type="1">
+<li>Let <span class="math inline">\(X_1, X_2, \dots, X_n \sim iid\;\; Gamma(\alpha,\beta),\)</span> both <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> unknown. Derive a method of moment estimators for <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>.</li>
+</ol>
+<p>The survival time (in weeks) of 20 randomly selected male mouse exposed to 240 units of certain type of radiation are given below.</p>
+<p><span class="math display">\[152, 115, 109, 94, 88, 137, 152, 77, 160, 165, 125, 40, 128, 123, 136, 101, 62, 153, 83, 69\]</span> It is believed that the survival times have a gamma distribution. Estimate the corresponding parameters.</p>
+<ol start="6" type="1">
+<li>Let <span class="math inline">\(x_1, x_2, \dots, x_n\)</span> be <span class="math inline">\(n\)</span> random measurements of random variable <span class="math inline">\(X\)</span> with the density function <span class="math display">\[f_X(x;\lambda)= \lambda x^{\lambda-1},\;\; 0&lt;x&lt;1, \;\; \lambda&gt;0\]</span> Derive a method of moment estimator for <span class="math inline">\(\lambda\)</span>.</li>
+</ol>
+<!-- Lecture note example 2.9-->
+<ol start="7" type="1">
+<li><p>Let <span class="math inline">\(x_1, x_2, \dots, x_n\)</span> be a random sample of size <span class="math inline">\(n\)</span> from a Poisson distribution with parameter <span class="math inline">\(\lambda\)</span>. Derive the maximum likelihood estimator of <span class="math inline">\(\lambda\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(x_1, x_2, \dots, x_n\)</span> be a random sample of size <span class="math inline">\(n\)</span> from a normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Derive the maximum likelihood estimators of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span>.</p></li>
+</ol>
+<!-- Lecture note page 58 PhD print note-->
+<ol start="9" type="1">
+<li>Let <span class="math inline">\(X_1, X_2, \dots, X_n \sim iid \; Poisson (\lambda)\)</span>. Find the MLE of <span class="math inline">\(P(X\leq 1)\)</span></li>
+</ol>
+<!-- Lecture note page 58 PhD print note-->
+<ol start="10" type="1">
+<li>Let <span class="math inline">\(X_1, X_2, \dots, X_n \sim iid \; N (\mu, \sigma^2)\)</span>. Find the MLE of <span class="math inline">\(\mu/\sigma\)</span>.</li>
+</ol>
+<!-- Lecture note bsc print example 2.3-->
+<ol start="11" type="1">
+<li>Let <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> be a random sample from an exponential distribution with the density function <span class="math display">\[f_X(x;\lambda)= \lambda e^{-\lambda x},\;\; x&gt;0.\]</span> Is the maximum likelihood estimators of <span class="math inline">\(\lambda\)</span> unbiased?</li>
+</ol>
+<!-- Lecture note bsc print example 2.1-->
+<p><em>Hint</em></p>
+<p>Let <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> be independent and identically distributed (i.i.d.) exponential random variables with rate parameter <span class="math inline">\(\lambda\)</span>, i.e.,</p>
+<p><span class="math display">\[X_i\sim \text{Exp}(\lambda)\quad i=1,2,\dots,n.\]</span> Then, the sum of these <span class="math inline">\(n\)</span> independent exponential random variables</p>
+<p><span class="math display">\[S_n = X_1+X_2+\dots+X_n\]</span></p>
+<p>follows a gamma distribution with shape parameter <span class="math inline">\(n\)</span> and rate parameter <span class="math inline">\(\lambda\)</span>:</p>
+<p><span class="math display">\[S_n\sim \text{Gamma}(n,\lambda).\]</span></p>
+<p>Further, for any positive integer <span class="math inline">\(n(&gt; 0)\)</span>, Gamma fucntion, <span class="math inline">\(\Gamma(n) = (n −1)!\)</span>.</p>
+<ol start="12" type="1">
+<li>Let <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> be a random sample of size <span class="math inline">\(n\)</span> from a normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Show that <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(S^2 = \frac{\sum_{i=1}^n(X_i-\bar{X})^2}{n-1}\)</span> are unbiased estimators of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span>, respectively.</li>
+</ol>
+<!-- Lecture note page 63 PhD print note-->
+<ol start="13" type="1">
+<li>Let <span class="math inline">\(x_1, x_2, \dots, x_n\)</span> be a random sample of size <span class="math inline">\(n\)</span> from a normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Consider the maximum likelihood estimators of <span class="math inline">\(\sigma^2\)</span>. Show the estimator <span class="math inline">\(\hat{\sigma^2} = \frac{\sum_{i=1}^n(X_i-\bar{X})^2}{n}\)</span> is biased for <span class="math inline">\(\sigma^2\)</span>, but it has a smaller MSE than <span class="math inline">\(S^2 = \frac{\sum_{i=1}^n(X_i-\bar{X})^2}{n-1}\)</span>.</li>
+</ol>
+<!-- Lecture note page 63 PhD print note-->
+<p><em>Hint</em></p>
+<p><strong>Distribution of sample variance of a normal distribution</strong></p>
+<p>Suppose that <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> is a random sample from a normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Let <span class="math inline">\(\bar{X} = \frac{X_1+X_2+\dots + X_n}{n}\)</span> be the sample mean and <span class="math inline">\(S^2 = \frac{1}{n-1}\sum_{i=1}^n(X_i-\bar{X})^2\)</span> be the sample variance. Then,</p>
+<p><span class="math display">\[\frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1}.\]</span></p>
+<ol start="14" type="1">
+<li>Let <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> be a random sample from some distribution and <span class="math inline">\(E(X) = \mu\)</span> and <span class="math inline">\(V(X) = \sigma^2\)</span>. Show that <span class="math inline">\(\bar{X}\)</span> is a better estimator than <span class="math inline">\(X_1\)</span> and <span class="math inline">\(\frac{X_1+X_2}{2}\)</span> for <span class="math inline">\(\mu\)</span> in terms of MSE.</li>
+</ol>
+<!-- BSc lecture note sir example before Example 2.1.1-->
+<ol start="15" type="1">
+<li><p>Let <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> be a random sample from a <span class="math inline">\(N(\mu, \sigma^2).\)</span> Let <span class="math inline">\(\bar{X}= \frac{\sum_{i=1}^nX_i}{n}\)</span> and <span class="math inline">\(T=\frac{\sum_{i=1}^n(X_i-\bar{X})^2}{n}\)</span>. Show that <span class="math inline">\(\bar{X}\)</span> is consistent for <span class="math inline">\(\mu\)</span> and <span class="math inline">\(T\)</span> is consistent for <span class="math inline">\(\sigma^2.\)</span></p></li>
+<li><p>Let <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> be a random sample from a normal distribution <span class="math display">\[X_i \sim N(\mu,\sigma^2)\]</span> where <span class="math inline">\(\mu\)</span> is the unknown mean parameter and <span class="math inline">\(\sigma^2\)</span> is a known variance. Consider the following two estimators for <span class="math inline">\(\mu\)</span>:</p></li>
+</ol>
+<ul>
+<li><p>Estimator 1: The sample mean <span class="math inline">\(\bar{X} = \frac{1}{n}\sum_{i=1}^nX_i\)</span></p></li>
+<li><p>Estimator 2: The first observation <span class="math inline">\(X_1\)</span>.</p></li>
+</ul>
+<ol type="i">
+<li><p>Show that both <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(X_1\)</span> are unbiased estimators of <span class="math inline">\(\mu\)</span>.</p></li>
+<li><p>Compute the variances of <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(X_1\)</span>. Which estimator has the smaller variance? Based on this, determine which estimator is the Uniformly Minimum Variance Unbiased Estimator (UMVUE).</p></li>
+<li><p>Using the Factorization Theorem, determine which of the two estimators is a sufficient statistic for <span class="math inline">\(\mu\)</span>.</p></li>
+<li><p>If <span class="math inline">\(X_1\)</span> is not sufficient, explain why it can be improved using the Rao-Blackwell Theorem to obtain a better estimator of <span class="math inline">\(\mu\)</span></p></li>
+<li><p>Summarize the findings and explain why the sample mean <span class="math inline">\(\bar{X}\)</span> is the best unbiased estimator of <span class="math inline">\(\mu\)</span>.</p></li>
+</ol>
+<!-- -->
+<ol start="17" type="1">
+<li>Let <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> be a random sample from a Poisson distribution <span class="math display">\[X_i \sim \text{Poisson}(\lambda), \quad i =1,2,\dots, n.\]</span></li>
+</ol>
+<p>Consider the following two estimators for <span class="math inline">\(\lambda\)</span>:</p>
+<ul>
+<li><p>Estimator 1: The sample mean <span class="math inline">\(\hat{\lambda_1} = \bar{X} = \frac{1}{n}\sum_{i=1}^nX_i\)</span></p></li>
+<li><p>Estimator 2: The mean of the first two observations <span class="math inline">\(\hat{\lambda_2} = \frac{X_1+X_2}{2}\)</span></p></li>
+</ul>
+<ol type="i">
+<li><p>Show that both <span class="math inline">\(\hat{\lambda_1}\)</span> and <span class="math inline">\(\hat{\lambda_2}\)</span> are unbiased estimators of <span class="math inline">\(\lambda\)</span>.</p></li>
+<li><p>Compute the variances of both estimators and determine which is more efficient.</p></li>
+<li><p>Use the Factorization Theorem to determine whether <span class="math inline">\(\bar{X}\)</span> or <span class="math inline">\(\hat{\lambda_2}\)</span> is a sufficient statistic for <span class="math inline">\(\lambda\)</span>.</p></li>
+<li><p>Use the Rao-Blackwell Theorem to improve <span class="math inline">\(\hat{\lambda_2}\)</span> as an estimator of <span class="math inline">\(\lambda\)</span>.</p></li>
+<li><p>Identify the UMVUE (Uniformly Minimum Variance Unbiased Estimator) of <span class="math inline">\(\lambda\)</span>.</p></li>
+</ol>
+<!-- -->
+<ol start="18" type="1">
+<li>A facial recognition algorithm is trained to classify images as “recognized” or “not recognized” based on past training data. It is observed that the probability of correctly recognizing a male face is <span class="math inline">\(\theta\)</span>, while the probability of correctly recognizing a female face is <span class="math inline">\(\theta^2\)</span> due to differences in training data representation.</li>
+</ol>
+<p>A dataset consisting of <span class="math inline">\(n\)</span> male images and <span class="math inline">\(m\)</span> female images is tested. Among them, <span class="math inline">\(x\)</span> male images and <span class="math inline">\(y\)</span> female images are correctly recognized by the AI model.</p>
+<ol type="i">
+<li><p>Derive the log likelihood function for all <span class="math inline">\(n+m\)</span> observations in terms of <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>Suppose <span class="math inline">\(n=m=100\)</span>, and the AI model correctly recognizes <span class="math inline">\(x=11\)</span> male faces and <span class="math inline">\(y=2\)</span> female faces. Derive the Maximum Likelihood Estimate (MLE) of <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>To address bias in the facial recognition model, a calibration function is introduced: <span class="math inline">\(\mu = g(\theta) = 200-20Z_{\theta}\)</span>. Find the MLE for <span class="math inline">\(\mu\)</span></p></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./2_Interval_Estimation.html" class="pagination-link" aria-label="Interval Estimation">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Interval Estimation</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

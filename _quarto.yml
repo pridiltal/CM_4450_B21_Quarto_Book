@@ -1,0 +1,32 @@
+project:
+  type: book
+
+book:
+  title: "CM_4450_B21__Quarto_Book"
+  author: "Priyanga D. Talagala"
+  date: "3/2/2026"
+  chapters:
+    - index.qmd
+    - 1_Point_Estimation.qmd
+    - 2_Interval_Estimation.qmd
+    - 3_Hypothesis_Testing.qmd
+    - 4_ Analysis_of_Variance_and_Regression.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+    include-in-header: 
+      text: |
+        \usepackage{scrlayer-scrpage}
+        \clearpairofpagestyles
+        \ofoot{\thepage}
+        \lofoot{Prepared by Dr. Priyanga D. Talagala  (Copyright 2026 P. D. Talagala)}
+
+editor: visual
+

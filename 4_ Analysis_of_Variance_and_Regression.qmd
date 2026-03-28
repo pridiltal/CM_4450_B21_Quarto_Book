@@ -1,0 +1,492 @@
+\pagenumbering{arabic}
+
+# Analysis of Variance and Regression
+
+- The methods of Analysis of Variance (ANOVA) and regression analysis are fundamental tools in statistical modeling, enabling researchers to explore relationships between variables and test hypotheses about group differences and linear associations.
+
+- This chapter introduces the principles and applications of ANOVA, which is used to determine whether the means of multiple groups differ significantly, particularly when dealing with categorical explanatory variables.
+
+- Building on this foundation, the chapter then explores Simple Linear Regression, which models the relationship between a single predictor and a response variable, and extends to Multiple Linear Regression, where two or more predictors are used to explain or predict the behavior of a dependent variable. 
+
+- Together, these techniques form a powerful framework for data analysis, supporting both inference and prediction in a wide range of scientific and practical contexts.
+
+
+ 
+## One-Way Analysis of Variance (ANOVA) and multiple comparisons
+
+- The One-Way Analysis of Variance (ANOVA) is a parametric statistical method used to test whether there are statistically significant differences between the means of three or more independent groups.
+
+- It extends the logic of the independent samples t-test, which is limited to comparing the means of two groups, by simultaneously analyzing variability among multiple groups within a single unified framework.
+
+- An **experimental design** is a plan and structure used to test hypotheses, where the researcher controls or manipulates one or more variables. It includes both independent and dependent variables..
+
+- Many different types of experimental designs are available to researchers. In this chapter, we focus on one of the simplest experimental designs: the completely randomized design. Other design types such as randomized block designs and factorial experiments are beyond the scope of this chapter.
+
+
+- In an experimental design, an **independent variable** may either be a **treatment variable** or a **classification variable**.
+
+- A **treatment variable** is one that the experimenter controls or modifies during the experiment.
+
+- A **classification variable** refers to a characteristic of the experimental subjects that existed prior to the experiment and is not a result of the experimenter’s manipulation or control.
+
+- Independent variables are also referred to as **factors**.
+
+- **Levels** are the subcategories or specific values of the independent variable used by the researcher in the experimental design.
+
+- The other key variable in an experimental design is the **dependent variable**.
+
+- A **dependent variable** is the observed response to the different levels of the independent variable.
+
+- A completely randomized design includes only one independent variable, which has two or more treatment levels or categories.
+
+- When the independent variable has only two treatment levels or categories, the design is equivalent to that used for comparing the means of two independent populations, where the independent t-test is typically used for analysis.
+
+- A Completely randomized design is analysed by a **one-way analysis of variance (ANOVA)**.
+
+- In general, when analyzing $k$ samples using one-way ANOVA, the hypotheses tested are:
+
+  $H_0$:  $\mu_1 = \mu_2 = \mu_3 = \dots =  \mu_k$
+  
+  $H_1$:  $\text{At leats one of the means is different from the others}$
+  
+- In one-way ANOVA, the total variance in the data is partitioned into the following two components:
+  
+  1. the variance resulting from the treatment
+  
+  2. the error variance or the portion fo the total variance unexplained by the treatment
+  
+  
+- As part of the analysis, the total sum of squares (i.e., the total deviation of observations from the overall mean) is divided into two additive and independent parts: the sum of squares due to treatment (tretment variation) and the sum of squares due to error (error variation).
+
+
+$$\sum_{i=1}^{n_j}\sum_{j=1}^{C}(x_{ij}-\bar{x})^2 = \sum_{j=1}^{C}n_j(\bar{x_{j}}-\bar{x})^2 + \sum_{i=1}^{n_j}\sum_{j=1}^{C}(x_{ij}-\bar{x_j})^2$$
+
+where:
+
+  $i$ = particular member of a treatment level
+  
+  $j$ = a treatment level
+  
+  $C$ = number of treatment levels
+  
+  $n_j$ = number of observations in a given treatment level
+  
+  $\bar{x}$ = grand mean
+  
+  $\bar{x_j}$ = mean of the treatment group or level
+  
+  $x_{ij}$ = individual value
+  
+\newpage
+
+Contd....
+
+\newpage
+
+
+- ANOVA compares the relative sizes of the treatment variation and the error variation.
+
+- If a significant difference in treatments is present, the treatment variation should be large relative to the error variation.
+
+- Several important assumptions underlie analysis of variance.
+
+**Assumption #1**: Observations are drawn from normally distributed populations.
+
+That is each sample is taken from a normally distributed population.
+
+
+**Assumption #2**: Variances of the populations are equal.
+
+That is the variance of data in the different groups should be the same.
+
+**Assumption #3**: Observations represent random samples from the populations.
+
+
+### Formulas for computing a one-way ANOVA
+
+
+$$SST = \sum_{i=1}^{n_j}\sum_{j=1}^{C}(x_{ij}-\bar{x})^2$$
+
+$$SSC =  \sum_{j=1}^{C}n_j(\bar{x_{j}}-\bar{x})^2$$
+
+
+
+$$SSE = \sum_{i=1}^{n_j}\sum_{j=1}^{C}(x_{ij}-\bar{x_j})^2$$
+
+
+- In the context of ANOVA, degrees of freedom (df) refer to the number of independent pieces of information available to estimate variance components and to test hypotheses.
+
+
+ $$df_T = N-1$$
+ 
+ 
+ $$df_C = C-1$$
+ 
+ 
+ $$df_E = N-C$$
+ 
+ 
+- Mean square is an average and is computed by dividing the sum of squares by the degrees of freedom. 
+
+$$MSC = \frac{SSC}{df_C}$$
+
+
+$$MSE = \frac{SSE}{df_E}$$
+
+- The **F value (ANOVA)** is the ratio of the treatment variance (MSC) to the error variance (MSE).
+
+$$F = \frac{MSC}{MSE}$$
+
+
+**Example**
+
+
+Automated hand sanitization plays a crucial role in promoting hygiene in public and private spaces.. In response to this, a company designed a portable hand sanitizer dispenser robot. Suppose the quality control engineer of the company wants to analyse the response time of four portable hand sanitizer dispenser robots before releasing them to the market.
+
+1. What is the independent variable in this design? 
+
+ Portable hand sanitizer dispenser robots
+  
+2. What is the dependent variable in this design?    
+
+   Response time
+   
+3. Is there a significant difference in the mean response time of 24 tasks carried out by the four portable hand sanitizer dispenser robots?
+
+
+Robot 1 | Robot 2 |Robot 3 | Robot 4
+------------------|------------------| ------------------|------------------
+6.33 |6.26| 6.44|6.29
+6.26 |6.36 |6.38| 6.23
+6.31|6.23|6.58|6.19
+6.29|6.27|6.54|6.21
+6.4|6.19|6.56| $\quad$
+$\quad$   | 6.50| 6.34|$\quad$
+ $\quad$  | 6.19|6.58 |$\quad$
+$\quad$   |6.22|  $\quad$ | $\quad$
+
+*Refer Python Lab session*
+
+\newpage
+
+## Regression analysis
+
+-   **Regression analysis** is a statistical technique for investigating and **modeling the relationship between variables**.
+-   There are numerous applications of regression in many fields.
+
+*Examples*
+
+-   A production company may need to determine how its sales related to advertising
+-   How the growth of the bacteria is related to moisture level of the environment.
+-   The relationship between blood pressure and the age of a person.
+-   the relationship between transaction time and transaction amount in fraud detection.
+
+<!-- Business statistics black e all page 499 3rd paragraph-->
+
+-   Usually, the first step in regression analysis is to construct a scatter plot (or scatter matrix).
+-   Graphing the data in a scatter plot yields preliminary information about the *shape* and *spread* of the data.
+
+<!-- Black et al. page 498-->
+
+### Simple Linear Regression
+
+-   The most elementary regression model is called **simple linear regression**.
+-   Is is also known as *bivariate linear regression*, which means that it involves only two variables.
+-   One variable is predicted by another variable.
+-   The variable to be predicted is called the *dependent variable* an is denoted by $y$.
+-   The *predictor* is called the *independent variable* or *explanatory variable* and is denoted by $x$
+-   In simple *linear* regression analysis, only a strait-line relationship between two variables is examined.
+-   Nonlinear relationships and regression models with more than one independent variable can be explored by using multiple regression models.
+
+#### Determining the equation of the regression line
+
+-   The first step in determining the equation of the regression line that passes through the sample data is to establish the equation's form.
+
+-   In mathematics, the equation of a line can be written as $$y=mx+c$$ where: $m$ = slope of the line \newline  $c$ = $y$ intercept of the line.
+
+-   In statistics, the slope-intercept form of the equation of the regression line through the population points is: $$\hat{y} = \beta_0+\beta_1x$$ where: $\hat{y}$ = the predicted value of $y$ \newline $\beta_0$ = the population $y$ intercept \newline $\beta_1$ = the population slope.
+
+-   For any specific dependent variable value, $y_i$: $$y_i = \beta_0+\beta_1x_i+\epsilon_i$$ where: $x_i$ = the value of the independent variable for the $i$th value \newline $y_i$ = the value of the dependent variable for the $i$th value \newline $\beta_0$ = the population $y$ intercept \newline $\beta_1$ = the population slope \newline $\epsilon_i$ = the error of prediction for the $i$th value.
+
+-   Unless the points being fitted by the regression equation are in perfect alignment, the regression line will miss at least some of the points.
+
+-   In the above equation, $\epsilon_i$ represents the error of the regression line in fitting these points. If a point is on the regression line, $\epsilon_i = 0$
+
+#### Deterministic models vs probabilistic models
+
+-   These mathematical models can be either deterministic models or probabilistic models.
+
+**Deterministic models**
+
+-   Deterministic models are *mathematical models that produces an* **exact** *output for a given input*
+-   For example, consider the equation of a regression line is: $$\hat{y} =1.68 + 2.40x$$.
+
+For a value of $x=5,$ the exact predicted value of $y$ is $$\hat{y} =1.68 + 2.40\times 5 = 13.68$$.
+
+-   However, the most of the time the values of $y$ will not equal exactly the values yields by the equations.
+-   Random error will occur in the prediction of the $y$ values for values of $x$, because it is likely that the variable $x$ does not explain all the variability of the variable $y$.
+
+*Example*
+
+-   Suppose we want to predict the sales volume ($y$) for a mobile phone company through regression analysis by using the annual amount of advertising (in Rupees) ($x$) as the predictor.
+-   Although sales are often related to advertising, there can be other factors related to sales that are not accounted for by the amount of advertising. <!--reputation, quality, type-->
+-   Therefore, a regression model to predict sales volume by the amount of advertising probably involves some error.
+-   For this reason, in regression, we present the general model as a probabilistic model.
+
+**Probabilistic models**
+
+-   A probabilistic model is *one that includes an error term that allows for the* $y$ *values to vary for any given value of* $x$.
+
+-   The deterministic regression model is $$y=\beta_0+\beta_1x$$
+
+-   The probabilistic regression model is $$y=\beta_0+\beta_1x+\epsilon.$$
+
+-   $\beta_0+\beta_1x$ is the deterministic portion of the probabilistic model, $\beta_0+\beta_1x+\epsilon.$
+
+-   In deterministic model, all points are assumed to be on the line and in all cases $\epsilon$ is zero.
+
+#### Least squares estimation of the parameters
+
+```{=html}
+<!-- Proof Regression analysis STA 204 2.0 pri note
+
+Note is from Black et. al page 501-->
+```
+
+-   The parameters $\beta_0$ and $\beta_1$ are unknown and need to be estimated using *sample data*.
+-   The equation of the regression line contains the sample $y$ intercept, $\hat{\beta_0}$, and the sample slope, $\hat{\beta_1}$.
+
+$$\hat{y} = \hat{\beta_0}+\hat{\beta_1}x$$ where: $\hat{y}$ = the predicted value of $y$ \newline $\hat{\beta_0}$ = the sample $y$ intercept \newline $\hat{\beta_1}$ = the sample slope
+
+-   To determine the equation of the regression line for a sample of data, the researcher must determine the values of $\hat{\beta_0}$ and $\hat{\beta_1}.$
+-   This process is sometimes referred to as **least squares analysis**.
+-   Least squares analysis is a process whereby a regression model is developed by *producing the minimum sum of the squared error values.*
+-   The least squares regression line is the **regression line that results in the smallest sum of errors squared**.
+
+<!-- Leave a page for the Derivation of the formula-->
+
+\newpage
+
+<!-- Discuss Tutorial Question 2 and 3-->
+
+*Example* <!-- Black et al page 509-->
+
+The data in the table are the twelve observations corresponding to concert attendance (in thousand) and total worldwide CD sales by the performing artist (or band) in the previous year (also in thousand).
+
+i. Draw a scatter diagram for the data and determine by inspection if there exists an approximate linear relationship between $X$ and $Y$.
+
+
+| Number of CD sales ('000) $x$ | Concert attendance ('000) $y$ | $x^2$ | $xy$ | Predicted value $\hat{y}$ | Residual $y-\hat{y}$ |
+|------------|------------|------------|------------|------------|------------|
+| 61 | 4.280 |  |  |  |  |
+| 63 | 4.080 |  |  |  |  |
+| 67 | 4.420 |  |  |  |  |
+| 69 | 4.170 |  |  |  |  |
+| 70 | 4.480 |  |  |  |  |
+| 74 | 4.300 |  |  |  |  |
+| 76 | 4.820 |  |  |  |  |
+| 81 | 4.700 |  |  |  |  |
+| 86 | 5.110 |  |  |  |  |
+| 91 | 5.130 |  |  |  |  |
+| 95 | 5.640 |  |  |  |  |
+| 97 | 5.560 |  |  |  |  |
+
+```{r  cd, echo = FALSE}
+record_sales <- c(61,63,67,69,70,74,76,81, 86,91,95,97)
+concert_attendance <- c(4.28,4.08,4.42,4.17,4.48,4.3,4.82,4.7,5.11,5.13,5.64,5.56)
+# lm(y ~ x)
+reg <- lm(concert_attendance ~ record_sales)
+plot(concert_attendance ~ record_sales) + abline(reg)
+```
+
+ii. Use the data  to develop a regression model to predict concert attendance by CD sales.
+
+
+\newpage
+
+*Least squares analysis cntd...* <!-- Leave a page for the Derivation of the formula-->
+
+\newpage
+
+*Least squares analysis cntd...* <!-- Leave a page for the Derivation of the formula-->
+
+\newpage
+
+### Residual analysis
+
+```{=html}
+<!-- very important https://rpubs.com/iabrady/residual-analysis
+
+this not is saved in CM 1110 Material regression folder as well-->
+```
+
+-   Each difference between the actual $y$ values and the predicted $y$ values is the error of the regression line at a given point, $y-\hat{y},$ and is referred to as the **residual**.
+-   Except for rounding error, the sum of the residuals is approximately zero
+-   The analysis of residuals plays an important role in validating the regression model.
+-   Residual analysis plots are a very useful tool for assessing aspects of accuracy of a linear regression model on a particular dataset and testing that the attributes of a dataset meet the requirements for linear regression.
+-   The following are the assumptions of simple linear regression analysis
+
+```{=html}
+<!-- Pri regression analysis second year note, black note page 510
+
+The relationship between $X$ and $Y$ is a straight line relationship.-->
+```
+
+1.  The model is linear.
+2.  The error terms have constant variances. (*The assumption of constant variance is called homoskedasticity. If the error variances are not constant, it is called heteroskedasticity.*)
+3.  The error terms are independent.
+4.  The error terms are normally distributed.
+
+-   Residual plots can be used to show if there are problems with the dataset and the model produced that need to be considered in looking at the validity of the model.
+
+**Residual plot**
+
+<!-- pg 511 black book-->
+
+-   A particular method for studying the behaviour of residuals is the residual plot.
+-   The residual plot is a type of graph in which the residuals for a particular regression model are plotted along with their associated value of $x$ and an ordered pair $(x, y-\hat{y})$.
+-   Information about how well the regression assumptions are met by the particular regression model can be obtained by examining the plots.
+-   Residual plots are more meaningful with larger sample sizes.
+-   For small sample sizes, residual plot analyses can be problematic and subject to over-interpretation.
+
+**Normal Q–Q (quantile-quantile) Plot**
+
+-   Residuals should be normally distributed.
+-   A normal quantile plot (also known as a quantile-quantile plot or QQ plot) is a graphical way of checking whether your data are normally distributed.
+-   If residuals follow close to a straight line on this plot, it is a good indication they are normally distributed.
+
+````{=html}
+<!--
+- Four standard plots can be accessed using the `plot()` function in R with the fit variable once the model is generated. 
+```{r  q2, echo = FALSE}
+record_sales <- c(61,63,67,69,70,74,76,81, 86,91,95,97)
+concert_attendance <- c(4.28,4.08,4.42,4.17,4.48,4.3,4.82,4.7,5.11,5.13,5.64,5.56)
+# lm(y ~ x)
+reg <- lm(concert_attendance ~ record_sales)
+reg
+
+par(mfrow = c(2,2))
+plot(reg)
+
+```
+
+\newpage
+*Residual analysis*
+
+
+
+\newpage
+
+<!-- black page 518. Also check schaum's statistics and econometrics book page 132-->
+````
+
+### Coefficient of determination
+
+-   A widely used measure of fit for regression, models is the **coefficient of determination** $(R^2)$
+-   It is a statistical measure of **how well the regression predictions approximate the real data points.**
+-   In statistical point of view, the coefficient of determination is the proportion of variability of the dependent variable ($y$) accounted for, or explained by, the independent variable ($x$)
+-   The coefficient of determination ranges from 0 to 1.
+-   An $R^2$ of zero means that the predictor accounts for none of the variability of the dependent variable and that there is no regression prediction of $y$ by $x$.
+-   An $R^2$ of 1 means perfect prediction of $y$ by $x$ and that $100\%$ of the variability of $y$ is accounted for by $x$ (*i.e.* an $R^2$ of 1 indicates that the regression predictions perfectly fit the data.)
+
+````{=html}
+<!--
+- The dependent variable, $y$, being predicted in a regression model has a variation that is measured by the total sum of squares of $y$ ($SS_{yy}$):
+
+$$SS_{yy} = \sum(y-\bar{y})^2= \sum y^2 - \frac{(\sum y)^2}{n}$$
+
+and is the sum of the squared deviations of the y values from the mean value of y.
+
+- This variation can be broken into two additive variations: the *explained variation*, measure by the sum of squares of regression ($SSR$), and the *unexplained variation*, measured by the sum of squares of error ($SSE$).
+- The relationship can be expressed in equation from as:
+$$SS_{yy}=SSR+SSE$$
+where $SSR = \sum (\hat{y} -\bar{y})^2$ and $SSE= \sum (y-\hat{y})^2$.
+- If each term in the equation is divided by $SS_{yy},$ the resulting equation is:
+$$1=\frac{SSR}{SS{yy}}+ \frac{SSE}{SS{yy}}.$$
+- The term $R^2$ is the proportion of the $y$ variability that is explained by the regression model and represented here as :
+$$R^2= \frac{SSR}{SS{yy}}.$$
+- Substituting this equation into the preceding relationship gives:
+$$1=R^2+ \frac{SSE}{SS{yy}}.$$
+- Solving for $R^2$ gives
+$$R^2=1- \frac{SSE}{SS{yy}}= 1-\frac{SSE}{\sum{y^2}- \frac{(\sum y)^2}{n}}.$$
+
+<!--
+```{r echo=TRUE}
+reg <- lm(concert_attendance ~ record_sales)
+summary(reg)
+```
+-->
+````
+
+### Relationship between $r$ and $R^2$
+
+-   Let $r$ be the coefficient of correlation.
+-   The coefficient of determination ($R^2$) is the square of the coefficient of correlation
+
+$$r = \sqrt{R^2}$$ 
+
+-   The researcher must examine the sign of the slope of the regression line to determine whether a positive or negative relationship exists between the variables and then assign the same sign to the correlation value.
+
+\newpage
+
+### Multiple Linear Regression
+
+<!--https://www.investopedia.com/terms/m/mlr.asp-->
+
+-   Multiple regression is an extension of ordinary least-squares (OLS) regression that involves more than one explanatory variable.
+-   Multiple linear regression (MLR) is a statistical technique that uses several explanatory variables to predict the outcome of a response variable.
+-   The goal of multiple linear regression (MLR) is to model the **linear** relationship between the explanatory (independent) variables and response (dependent) variable.
+
+*General equation for the probabilistic multiple linear regression model*
+
+$$y=\beta_0+\beta_1 x_1+\beta_2 x_2+\beta_3 x_3+ \dots + \beta_k x_k+ \epsilon$$
+
+where
+
+-   $y =$ the value of the dependent variable/ response variable
+-   $\beta_0 =$ the regression constant, or intercept
+-   $\beta_1 =$ the partial regression coefficient for independent variable 1
+-   $\beta_2 =$ the partial regression coefficient for independent variable 2
+-   $\beta_k =$ the partial regression coefficient for independent variable k
+-   $k =$ the number of independent variables.
+
+
+- The **partial regression coefficient of an independent variable**, $\beta_j,$ represents *the increase that will occur in the value of y from a one-unit increase in that independent variable if all other variables are held constant.*
+
+- The partial regression coefficients occur because more than one predictor is included in a model. 
+
+- the simplest multiple regression model is one constructed with two independent variables, where the highest power of either variable is 1. The  regression model is 
+
+$$y=\beta_0+\beta_1 x_1+\beta_2 x_2+ \epsilon$$
+
+The constant and coefficients are estimated from sample information resulting in the following model
+
+
+$$\hat{y}=\hat{\beta_0}+\hat{\beta_1} x_1+\hat{\beta_2} x_2$$
+- Simple regression models yield a line that is fit through data points in the $xy$ plane.
+
+- In multiple regression analysis, the resulting model produces a response surface.
+
+- The procedure for determining formulas to solve for multiple regression coefficients is similar. the formulas are established to meet an objecitve of minising the sum of squares of error for the model. 
+
+
+*Example*
+
+A real estate study was conducted in a major city to investigate the factors influencing the market price of residential homes. Data were collected on 23 houses, recording the market price (in thousands of dollars), the size of each house in square metres, and the age of each house in years. As a data scientist working for a real estate company, you are required to develop a multiple linear regression model to predict the market price of a house based on its size and age. 
+
+1. Using the given dataset, perform an exploratory data analysis to summarize and visualize the relationships among the variables. 
+
+2. Fit a multiple linear regression model with market price as the dependent variable and the other two variables as predictors.
+
+3. Clearly interpret the regression coefficients, assess the statistical significance of the predictors, and evaluate the overall fit of the model. 
+
+4. Use your model to predict the price of a house that is 250 square metres in size and 12 years old, and discuss any assumptions made in the regression analysis.
+
+
+## References {.unnumbered}
+
+-   Black, K., Asafu-Adjaye, J., Khan, N., Perera, N., Edwards, P., & Harris, M. (2007). *Australasian business statistics*. John Wiley & Sons.
+
+-   Montgomery, D. C., Peck, E. A., & Vining, G. G. (2012). Introduction to linear regression analysis (Vol. 821). John Wiley & Sons.
+
+-   Salvatore, D., & Reagle, D. (2002). Statistics and Econometrics, Schaum’s Outline Series.
