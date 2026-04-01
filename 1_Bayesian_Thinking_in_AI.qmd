@@ -1,0 +1,85 @@
+# The Bayasian paradigm for statistical Inference
+
+
+
+\pagenumbering{arabic}
+
+
+\textbf{The content of this chapter draws heavily on \textit{Bayesian Analysis with Python: Unleash the power and flexibility of the Bayesian framework} by Osvaldo Martin.}
+
+
+## Inferential statistics
+
+- Basic analysis can often be done using plots and simple summaries like averages.
+
+- When deeper insight is needed, we use inferential statistics to generalize beyond the observed data.
+
+- This includes understanding data-generating mechanisms, predicting future observations, and comparing competing explanations.
+
+- Inferential statistics relies on probabilistic models to achieve these goals.
+
+- A model is a simplified representation of a real system expressed through probabilities, focusing only on the most relevant aspects, and simpler models are preferred when they explain the data equally well 
+
+- Statistical inference is the process of drawing conclusions about unobserved quantities and future outcomes based on observed data.
+
+- Bayesian statistical inference is a specific approach to statistical inference that expresses these conclusions using probability statements conditioned on the observed data.
+
+- Model evaluation involves assessing how well the model explains the data, checking whether the conclusions are reasonable, and examining how sensitive the results are to the assumptions made in the model.
+
+- The modeling process is iterative, often requiring refinement of assumptions, model structure, or additional data based on evaluation results.
+
+\newpage 
+
+- The process of Bayesian data analysis can be idealized by dividing it into the following three steps:
+
+1.  Setting up a full probability model - a joint probability distribution for all observable and unobservable quantities in a problem. The model should be consistent with knowledge about the underlying scientific problem and the data collection process.
+
+2.  Conditioning on observed data -  calculating and interpreting the appropriate posterior distribution—the conditional probability distribution of the unobserved quantities of ultimate interest, given the observed data.
+
+3.  Evaluating the fit of the model and the implications of the resulting posterior distribution - how well does the model fit the data, are the substantive conclusions reasonable, and how sensitive are the results to the modeling assumptions in step 1? In response, one can alter or expand the model and repeat the three steps.
+
+- A primary motivation for Bayesian thinking is that it enables a direct and intuitive interpretation of statistical conclusions in terms of probabilities that quantify uncertainty about unknown quantities.
+
+
+## Probabilities and uncertainty
+
+- Probability has multiple interpretations. In the Bayesian view, it quantifies uncertainty about a statement rather than describing long-run frequencies.
+
+- In Bayesian statistics, probability is used to describe how uncertain we are about something. It is not only about repeated experiments, but about our knowledge of a statement.
+
+- When we have no information, our uncertainty is high, so we consider many possible values as plausible (e.g., a coin could have any bias between 0 and 1).
+
+- When we have prior knowledge, we can express it using prior beliefs (e.g., a coin is likely close to fair, around 0.5).
+
+- When we collect data, we update our prior beliefs to get posterior beliefs, which reduce uncertainty about the unknown quantity.
+
+- This updating is done using Bayes’ theorem:
+
+$$p(\theta \mid y) \propto p(y \mid \theta)\, p(\theta)$$
+
+- Probabilities can be assigned to any uncertain statement (e.g., existence of life on Mars, value of a physical constant, past events).
+
+- Probability reflects our knowledge about a situation, not necessarily whether the event itself is random.
+
+- This interpretation is called the epistemic (or subjective) view of probability, but it is still based on data, models, and assumptions.
+
+- In Bayesian thinking, probability 1 means certain and probability 0 means impossible, linking probability with logic under uncertainty.
+Values of 0 or 1 are usually reserved for statements that are logically true or false 
+
+- Probability theory provides a consistent way to reason under uncertainty, and Bayes’ theorem follows from its basic rules.
+
+- Basic rules of probability include:
+
+$$p(A,B) = p(A \mid B)\, p(B)$$
+
+
+- Conditional probability is defined as:
+
+
+$$p(A \mid B) = \frac{p(A, B)}{p(B)}, \quad p(B) > 0$$
+
+- If two events are independent, knowing one does not change the other:
+
+$$p(A \mid B) = p(A)$$
+
+- All probabilities are always conditional on some assumptions, data, or context; they are not absolute values.
