@@ -1,85 +1,482 @@
 # The Bayasian paradigm for statistical Inference
 
-
-
 \pagenumbering{arabic}
-
 
 \textbf{The content of this chapter draws heavily on \textit{Bayesian Analysis with Python: Unleash the power and flexibility of the Bayesian framework} by Osvaldo Martin.}
 
-
 ## Inferential statistics
 
-- Basic analysis can often be done using plots and simple summaries like averages.
+-   Basic analysis can often be done using plots and simple summaries like averages.
 
-- When deeper insight is needed, we use inferential statistics to generalize beyond the observed data.
+-   When deeper insight is needed, we use inferential statistics to generalize beyond the observed data.
 
-- This includes understanding data-generating mechanisms, predicting future observations, and comparing competing explanations.
+-   This includes understanding data-generating mechanisms, predicting future observations, and comparing competing explanations.
 
-- Inferential statistics relies on probabilistic models to achieve these goals.
+-   Inferential statistics relies on probabilistic models to achieve these goals.
 
-- A model is a simplified representation of a real system expressed through probabilities, focusing only on the most relevant aspects, and simpler models are preferred when they explain the data equally well 
+-   A model is a simplified representation of a real system expressed through probabilities, focusing only on the most relevant aspects, and simpler models are preferred when they explain the data equally well
 
-- Statistical inference is the process of drawing conclusions about unobserved quantities and future outcomes based on observed data.
+-   Statistical inference is the process of drawing conclusions about unobserved quantities and future outcomes based on observed data.
 
-- Bayesian statistical inference is a specific approach to statistical inference that expresses these conclusions using probability statements conditioned on the observed data.
+-   Bayesian statistical inference is a specific approach to statistical inference that expresses these conclusions using probability statements conditioned on the observed data.
 
-- Model evaluation involves assessing how well the model explains the data, checking whether the conclusions are reasonable, and examining how sensitive the results are to the assumptions made in the model.
+-   Model evaluation involves assessing how well the model explains the data, checking whether the conclusions are reasonable, and examining how sensitive the results are to the assumptions made in the model.
 
-- The modeling process is iterative, often requiring refinement of assumptions, model structure, or additional data based on evaluation results.
+-   The modeling process is iterative, often requiring refinement of assumptions, model structure, or additional data based on evaluation results.
 
-\newpage 
+\newpage
 
-- The process of Bayesian data analysis can be idealized by dividing it into the following three steps:
+-   The process of Bayesian data analysis can be idealized by dividing it into the following three steps:
 
 1.  Setting up a full probability model - a joint probability distribution for all observable and unobservable quantities in a problem. The model should be consistent with knowledge about the underlying scientific problem and the data collection process.
 
-2.  Conditioning on observed data -  calculating and interpreting the appropriate posterior distribution—the conditional probability distribution of the unobserved quantities of ultimate interest, given the observed data.
+2.  Conditioning on observed data - calculating and interpreting the appropriate posterior distribution—the conditional probability distribution of the unobserved quantities of ultimate interest, given the observed data.
 
 3.  Evaluating the fit of the model and the implications of the resulting posterior distribution - how well does the model fit the data, are the substantive conclusions reasonable, and how sensitive are the results to the modeling assumptions in step 1? In response, one can alter or expand the model and repeat the three steps.
 
-- A primary motivation for Bayesian thinking is that it enables a direct and intuitive interpretation of statistical conclusions in terms of probabilities that quantify uncertainty about unknown quantities.
-
+-   A primary motivation for Bayesian thinking is that it enables a direct and intuitive interpretation of statistical conclusions in terms of probabilities that quantify uncertainty about unknown quantities.
 
 ## Probabilities and uncertainty
 
-- Probability has multiple interpretations. In the Bayesian view, it quantifies uncertainty about a statement rather than describing long-run frequencies.
+-   Probability has multiple interpretations. In the Bayesian view, it quantifies uncertainty about a statement rather than describing long-run frequencies.
 
-- In Bayesian statistics, probability is used to describe how uncertain we are about something. It is not only about repeated experiments, but about our knowledge of a statement.
+-   In Bayesian statistics, probability is used to describe how uncertain we are about something. It is not only about repeated experiments, but about our knowledge of a statement.
 
-- When we have no information, our uncertainty is high, so we consider many possible values as plausible (e.g., a coin could have any bias between 0 and 1).
+-   When we have no information, our uncertainty is high, so we consider many possible values as plausible (e.g., a coin could have any bias between 0 and 1).
 
-- When we have prior knowledge, we can express it using prior beliefs (e.g., a coin is likely close to fair, around 0.5).
+-   When we have prior knowledge, we can express it using prior beliefs (e.g., a coin is likely close to fair, around 0.5).
 
-- When we collect data, we update our prior beliefs to get posterior beliefs, which reduce uncertainty about the unknown quantity.
+-   When we collect data, we update our prior beliefs to get posterior beliefs, which reduce uncertainty about the unknown quantity.
 
-- This updating is done using Bayes’ theorem:
+-   This updating is done using Bayes’ theorem:
 
 $$p(\theta \mid y) \propto p(y \mid \theta)\, p(\theta)$$
 
-- Probabilities can be assigned to any uncertain statement (e.g., existence of life on Mars, value of a physical constant, past events).
+-   Probabilities can be assigned to any uncertain statement (e.g., existence of life on Mars, value of a physical constant, past events).
 
-- Probability reflects our knowledge about a situation, not necessarily whether the event itself is random.
+-   Probability reflects our knowledge about a situation, not necessarily whether the event itself is random.
 
-- This interpretation is called the epistemic (or subjective) view of probability, but it is still based on data, models, and assumptions.
+-   This interpretation is called the epistemic (or subjective) view of probability, but it is still based on data, models, and assumptions.
 
-- In Bayesian thinking, probability 1 means certain and probability 0 means impossible, linking probability with logic under uncertainty.
-Values of 0 or 1 are usually reserved for statements that are logically true or false 
+-   In Bayesian thinking, probability 1 means certain and probability 0 means impossible, linking probability with logic under uncertainty. Values of 0 or 1 are usually reserved for statements that are logically true or false
 
-- Probability theory provides a consistent way to reason under uncertainty, and Bayes’ theorem follows from its basic rules.
+-   Probability theory provides a consistent way to reason under uncertainty, and Bayes’ theorem follows from its basic rules.
 
-- Basic rules of probability include:
+-   Basic rules of probability include:
 
 $$p(A,B) = p(A \mid B)\, p(B)$$
 
-
-- Conditional probability is defined as:
-
+-   Conditional probability is defined as:
 
 $$p(A \mid B) = \frac{p(A, B)}{p(B)}, \quad p(B) > 0$$
 
-- If two events are independent, knowing one does not change the other:
+-   If two events are independent, knowing one does not change the other:
 
 $$p(A \mid B) = p(A)$$
 
-- All probabilities are always conditional on some assumptions, data, or context; they are not absolute values.
+-   All probabilities are always conditional on some assumptions, data, or context; they are not absolute values.
+
+## Probability distributions
+
+-   A probability distribution describes how likely different events are within a defined set of possible outcomes.
+
+-   In statistics, data is often assumed to be generated from a probability distribution with unknown (unobserved) parameters.
+
+-   Since the parameters are unknown, Bayesian inference uses Bayes’ theorem to infer them from observed data.
+
+-   Probability distributions are the fundamental building blocks of Bayesian models, and complex models are formed by combining simpler distributions.
+
+-   The Gaussian (normal) distribution is one of the most commonly used probability distributions.
+
+-   A Gaussian distribution is defined by two parameters: the mean (location) and the standard deviation (spread).
+
+-   The mean determines the center of the distribution, while the standard deviation controls how spread out the values are.
+
+-   There are infinitely many Gaussian distributions, each corresponding to different combinations of mean and standard deviation, but all belong to the same family.
+
+*Refer Python Lab - Exercise 1*
+
+-   A random variable is a variable whose values are generated according to a probability distribution.
+
+-   A random variable does not take arbitrary values outside its distribution. Its possible values are restricted by the probability distribution.
+
+-   The term "randomness" refers to uncertainty in prediction, not to the variable being able to take any value freely.
+
+-   Even though the values follow a defined distribution, we cannot predict exactly which value will occur in advance—only the probabilities of different outcomes.
+
+-   So, the key idea is: The distribution controls the possible values, and randomness reflects our uncertainty about which of those allowed values will occur.
+
+*Example*
+
+-   A random variable following a Gaussian (normal) distribution is written as:
+
+$$X \sim \mathcal{N}(\mu, \sigma^2)$$
+
+-   There are two types of random variables: continuous and discrete.
+
+-   Continuous random variables can take any value within an interval, while discrete random variables take specific, countable values.
+
+-   In many models, random variables are assumed to be independently and identically distributed (i.i.d.), meaning all observations come from the same distribution and are independent of each other.
+
+-   Independence between two variables means their joint probability factorizes as:
+
+$$p(x, y) = p(x)\, p(y)$$
+
+-   A common example of non iid variables is time series data, where each value is influenced by previous values, so the observations are not independent.
+
+## Bayes' theorem and statistical inference
+
+-   Bayes’ theorem expresses how to update beliefs about a hypothesis using observed data:
+
+$$p(H \mid D) = \frac{p(D \mid H)\, p(H)}{p(D)}$$ It is derived using the product rule of probability:
+
+$$p(H, D) = p(D \mid H)\, p(H)$$
+
+The same joint probability can also be written as:
+
+$$p(H, D) = p(H \mid D)\, p(D)$$
+
+-   Equating these expressions and rearranging leads to Bayes’ theorem.
+
+-   A key insight is that $p(H \mid D) \neq p(D \mid H)$; the direction of conditioning matters.
+
+-   In Bayesian inference, hypotheses are typically represented using parameters of probability models rather than abstract statements.
+
+-   The components of Bayes’ theorem are:
+
+    -   Prior: $P(H)$ - belief before observing data
+
+    -   Likelihood: $p(D∣H$) - the probability of observing the data given a specific model or parameter value. (e.g., a specific value of $\theta$).
+
+    -   Posterior: $p(H∣D$) — updated belief after observing data
+
+    -   Evidence: $p(D)$ — normalization term
+
+-   The posterior combines prior knowledge and observed data, representing updated knowledge about the parameters.
+
+-   The evidence is often treated as a normalization constant and is commonly ignored in proportional form:
+
+$$p(H \mid D) \propto p(D \mid H)\, p(H)$$
+
+-   The posterior can be used as a prior for new data, enabling sequential updating of beliefs.
+
+-   Some examples include real-time AI systems such as disaster early warning systems that continuously process streaming data from sensors, meteorological stations, and satellites. These systems update their predictions as new data arrives, similar to online machine learning methods.
+
+-   Summary : "Probabilities are used to measure the uncertainty we have about parameters, and Bayes' theorem is the mechanism to correctly update those probabilities in the light of new data, hopefully reducing our uncertainty."
+
+## Single parameter inference
+
+-   Single-parameter inference is the process of estimating a **single unknown parameter** of a probabilistic model by updating prior beliefs with observed data.
+
+**Example**
+
+-   The coin-flipping problem is a classic example used to introduce single parameter inference
+
+-   We repeatedly toss a coin and record outcomes (heads/tails).
+
+-   The goal is to estimate the bias of the coin (i.e., probability of heads) and determine whether the coin is fair.
+
+-   This problem is simple but powerful for understanding Bayesian inference.
+
+-   It represents binary outcomes, which are common in real-world AI problems (e.g., spam vs. not spam, success vs. failure).
+
+-   In Bayesian analysis, we need: Observed data (number of heads and tails)
+
+-   A probabilistic model describing the data-generating process
+
+-   The unknown quantity (coin bias) is treated as a parameter to be inferred.
+
+-   Bayesian methods update our belief about this parameter using observed data.
+
+-   The coin-flip model serves as a foundation for more complex real-world applications.
+
+-   Computational tools (e.g., PyMC) can later be used to solve such models numerically without manual calculations.
+
+### The General Model
+
+-   The coin bias is represented by a parameter $\theta$ where:
+
+    -   $\theta = 1$ always heads
+    -   $\theta = 0$ always tails
+    -   $\theta = 0.5$ fair coin
+
+-   Let $y$ be the number of heads observed in $N$ tosses.
+
+-   The goal is to estimate $\theta$ given the observed data $y$.
+
+Using Bayes’ theorem:
+
+$$p(\theta \mid y) \propto p(y \mid \theta)\, p(\theta)$$ - This requires specifying:
+
+-   A prior $p(\theta)$
+
+-   A likelihood $p(y|\theta)$
+
+### Choosing the Likelihood
+
+-   Assume:
+
+    -   Each coin toss is independent
+    -   Only two outcomes are possible (heads or tails)
+
+-   Under these assumptions, the binomial distribution is used as the likelihood.
+
+-   The likelihood gives the probability of observing $y$ heads out of $N$ tosses for a given fixed value of $\theta$:
+
+$$p(y \mid \theta) = \binom{N}{y} \theta^{y} (1 - \theta)^{N - y}$$
+
+-   This models the number of successes (heads) in repeated independent trials.
+
+*Refer Python Lab - Exercise 2*
+
+-   The binomial distribution is a suitable choice for modeling coin flips under the assumptions of independent trials and two possible outcomes (head or tail).
+
+-   The parameter $\theta$ represents the probability of obtaining a head in a single coin toss.
+
+-   A head is observed $y$ times, while a tail is observed $N−y$ times.
+
+-   Therefore:
+
+    -   Probability of head: $\theta$
+    -   Probability of tail: $1-\theta$
+
+-   If $\theta$ were known, the binomial distribution would describe the probability of observing a given number of heads out of $N$ tosses.
+
+-   However, $\theta$ is unknown.
+
+-   In Bayesian inference, unknown parameters are treated as random variables and assigned a prior distribution to $\theta$ before observing the data.
+
+### Choosing the Prior (Beta Distribution)
+
+-   A common choice for the prior of $\theta$ is the Beta distribution.
+
+-   The Beta distribution is defined as:
+
+$$p(\theta) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)} \, \theta^{\alpha - 1}(1 - \theta)^{\beta - 1}$$
+
+-   The Gamma function $\Gamma(.)$ acts as a normalization constant to ensure the distribution integrates to 1.
+
+-   The Beta distribution has two parameters:
+
+    -   $\alpha$: controls the weight toward values near 1
+    -   $\beta$: controls the weight toward values near 0
+
+-   These parameters shape the prior belief about $\theta$ before observing any data.
+
+**Why Use the Beta Distribution as a Prior?**
+
+-   The Beta distribution is defined on the interval $[0,1]$, which matches the range of the parameter $\theta$ (probability of heads).
+
+-   It is highly flexible and can take different shapes depending on its parameters:
+
+    -   Uniform-like
+    -   Bell-shaped (Gaussian-like)
+    -   U-shaped
+    -   Skewed distributions
+
+*Refer Python Lab Exercise 3*
+
+-   This flexibility allows it to represent different prior beliefs about $\theta$ .
+
+-   The Beta distribution is the **conjugate prior** of the Binomial likelihood.
+
+-   This means that when a Beta prior is combined with a Binomial likelihood, the resulting posterior distribution is also a Beta distribution:
+
+-   NOTE: A conjugate prior is a prior distribution that, when combined with a given likelihood, produces a posterior distribution of the same family (same functional form) as the prior
+
+$$p(\theta \mid y) \propto p(y \mid \theta)\, p(\theta)$$
+
+-   Conjugacy simplifies the analysis because the posterior has the same functional form as the prior.
+
+-   Historically, conjugate priors were used because they allow analytical (closed-form) solutions for the posterior.
+
+-   Before modern computational methods, this property was important to make Bayesian inference tractable.
+
+-   Today, computational techniques allow us to perform Bayesian inference even when conjugate priors are not used
+
+### Getting the Posterior
+
+-   From Bayes’ theorem:
+
+$$p(\theta \mid y) \propto p(y \mid \theta)\, p(\theta)$$
+
+-   For this problem:
+
+    -   Likelihood: Binomial distribution
+
+    -   Prior: Beta distribution
+
+$$p(\theta|y) \propto \frac{N!}{N!(N-y)!}\theta^y(1-\theta
+)^{(N-y)}\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}\theta^{(\alpha -1)}(1-\theta)^{(\beta -1)}$$
+
+-   Ignoring constant terms that do not depend on $\theta$, we get:
+
+$$p(\theta|y) \propto \theta^y(1-\theta
+)^{(N-y)}\theta^{(\alpha -1)}(1-\theta)^{(\beta -1)}$$
+
+-   Reordering it we get
+
+$$p
+(\theta|y) \propto \theta^{\alpha -1 +y}(1-\theta
+)^{(\beta -1+N-y)}$$
+
+-   This has the same functional form as a Beta distribution.
+
+-   Therefore, the posterior is also a Beta distribution with updated parameters:
+
+$$\alpha_{\text{posterior}} = \alpha_{\text{prior}} + y$$
+
+$$\beta_{\text{posterior}} = \beta_{\text{prior}} + (N - y)$$
+
+-   So the posterior distribution is:
+
+$$p(\theta \mid y) \sim \text{Beta}(\alpha_{\text{prior}} + y,\ \beta_{\text{prior}} + N - y)$$
+
+*Refer Python Lab Exercise 4*
+
+### Posterior and Priors in Bayesian Inference
+
+-   The result of Bayesian analysis is a posterior distribution, which represents a range of plausible values for a parameter, not a single value.
+
+-   The mode of the posterior corresponds to the most probable value of the parameter.
+
+-   The spread of the posterior reflects uncertainty:
+
+    -   Wider distribution - more uncertainty
+    -   Narrower distribution - less uncertainty
+
+-   With more data, uncertainty decreases, and the posterior becomes more concentrated.
+
+-   As the amount of data increases, different priors tend to lead to similar posterior results:
+
+$\text{As } N \to \infty,\ \text{posterior is dominated by data}$
+
+-   Bayesian updating is sequentially consistent:
+
+    -   Updating step-by-step (one observation at a time) gives the same result as updating all data at once.
+
+### Influence and Choice of Priors
+
+-   In Bayesian inference, a **prior** represents what we believe about a parameter before seeing any data.
+
+-   The **posterior** is influenced by both the prior and the observed data:
+
+$$p(\theta \mid y) \propto p(y \mid \theta)\, p(\theta)$$
+
+**Why priors matter (intuition)**
+
+-   If we have **very little data**, the prior has a strong influence on the result.
+
+-   If we have **a lot of data**, the data dominates and the prior has less influence.
+
+-   So, priors act like a starting point for our belief.
+
+**Types of priors**
+
+-   Non-informative priors
+
+    -   Try to have minimal influence on the result
+    -   Used when we have almost no prior knowledge
+    -   Example: a uniform distribution over a range
+    -   Intuition: “I don’t know anything beforehand”
+
+-   Weakly informative priors
+
+    -   Include mild, reasonable assumptions
+    -   Do not strongly restrict the parameter but guide it within realistic ranges
+    -   Commonly used in practice
+    -   Example: restricting probabilities between 0 and 1 or values near a plausible range
+    -   Intuition: “I have some idea, but I’m not too strict”
+
+-   Informative priors
+
+    -   Based on strong prior knowledge or past data
+    -   Provide strong guidance to the model
+    -   Useful when reliable domain knowledge exists
+    -   Intuition: “I already know quite a lot about this parameter”
+
+**Why weakly informative priors are preferred**
+
+-   They help keep parameter estimates within reasonable bounds
+
+-   They prevent extreme or unrealistic estimates
+
+-   They improve stability of the model (this is often called regularization)
+
+**Key ideas**
+
+-   Priors should reflect any available domain knowledge when possible
+
+-   Ignoring useful prior information may lead to less accurate models
+
+-   Priors make models:
+
+    -   More transparent (assumptions are explicit)
+    -   More interpretable
+    -   More reproducible
+
+-   Bayesian analysis always includes assumptions through priors, even if they are not written explicitly
+
+-   Different prior choices lead to different models, so we may need to compare models to decide which one fits best
+
+### Summarizing the Posterior
+
+-   The posterior distribution represents all the information about a parameter after combining the data and the model.
+
+-   Instead of only reporting a single value, it is often useful to:
+
+    -   Show the full posterior distribution
+    -   Report summary statistics such as: Mean, median, or mode to indicate the central (typical) value and Standard deviation to indicate spread (uncertainty)
+
+-   However the standard deviation works well when the distribution is approximately symmetric (e.g., normal-like), but it can be misleading for skewed distributions.
+
+**Highest Posterior Density (HPD) Interval**
+
+-   The HPD interval is used to summarize uncertainty in a Bayesian posterior.
+
+-   It is defined as the shortest interval containing a specified probability mass (e.g., 95%).
+
+-   Example: A 95% HPD interval of $[2,5]$ means:
+
+$$P(2 \leq \theta \leq 5) = 0.95$$
+
+-   This means we believe there is a $95\%$ probability that the parameter lies within that interval, given the data and model.
+
+-   Common choices include: 95% HDP or 98% HDP
+
+-   HPD intervals are intuitive and directly reflect uncertainty in the parameter.
+
+*Refer Python Lab Exercise 5*
+
+### Posterior Predictive Checks
+
+-   After computing the posterior distribution, we can use it to generate new (predicted) data.
+
+-   These generated data are called posterior predictive samples.
+
+-   The idea is to compare Observed data (real data) and Predicted data (simulated from the model)
+
+-   The main goal is to check whether the model is consistent with the observed data.
+
+-   If the model is appropriate simulated data will look similar to observed data.
+
+-   If the model is inadequate, there will be noticeable differences between observed and predicted data.
+
+-   These differences help identify:
+
+    -   Model misspecification
+    -   Incorrect assumptions
+    -   Data-related issues
+
+-   Posterior predictive checks help us understand:
+
+    -   What the model captures well
+    -   What the model fails to capture
+
+-   A model may capture the overall trend (e.g., mean) but fail to capture rare or extreme values
+
+-   Here the objective is not to prove a model is “true,” but to evaluate whether it is useful for the problem at hand.
+
+-   All models are approximations, so checking their validity is important before using them in practice.
+
+-   Posterior predictive checks are often used together with exploratory data analysis to evaluate model performance.

@@ -8,6 +8,7 @@ book:
   chapters:
     - index.qmd
     - 1_Bayesian_Thinking_in_AI.qmd
+    - 2_Bayesian_computation.qmd
     - references.qmd
 
 bibliography: references.bib
